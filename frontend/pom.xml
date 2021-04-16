@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>br.inatel.cdg</groupId>
+    <artifactId>demo-springboot-angular</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>br.inatel.cdg</groupId>
+	<artifactId>frontend</artifactId>
+	<version>${project.parent.version}</version>
+	<name>demo-spring-angular-frontend</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${project.basedir}/dist</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.11.3</version>
+
+        <executions>
+
+          <execution>
+            <id>Install Node and NPM</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v15.11.0</nodeVersion>
+              <npmVersion>7.6.0</npmVersion>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>npm run build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run build --prod</arguments>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+
+</project>
